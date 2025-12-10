@@ -46,42 +46,6 @@ const statusColors: Record<string, 'info' | 'warning' | 'success' | 'error' | 's
   completed: 'secondary',
 }
 
-// Persian translations for the admin panel
-const persianTranslations = {
-  dashboardTitle: "داشبورد مدیریت ایران‌علاج",
-  totalRequests: "مجموع درخواست‌ها",
-  newRequests: "درخواست‌های جدید",
-  underReview: "در حال بررسی",
-  approved: "تایید شده",
-  completed: "تکمیل شده",
-  medicalRequests: "درخواست‌های پزشکی",
-  filterByStatus: "فیلتر بر اساس وضعیت",
-  allRequests: "همه درخواست‌ها",
-  needDocuments: "نیاز به مدارک",
-  rejected: "رد شده",
-  travelPlanning: "برنامه‌ریزی سفر",
-  patient: "بیمار",
-  specialty: "تخصص",
-  status: "وضعیت",
-  date: "تاریخ",
-  actions: "عملیات",
-  noRequests: "درخواستی یافت نشد",
-  manageDoctors: "مدیریت پزشکان",
-  manageHospitals: "مدیریت بیمارستان‌ها",
-  managePackages: "مدیریت پکیج‌ها",
-  manageHotels: "مدیریت هتل‌ها",
-  loading: "در حال بارگذاری...",
-  statuses: {
-    new: "جدید",
-    under_review: "در حال بررسی",
-    need_documents: "نیاز به مدارک",
-    approved: "تایید شده",
-    rejected: "رد شده",
-    travel_planning: "برنامه‌ریزی سفر",
-    completed: "تکمیل شده"
-  }
-}
-
 export default function AdminDashboard() {
   const t = useTranslations()
   const [requests, setRequests] = useState<MedicalRequest[]>([])
@@ -140,18 +104,15 @@ export default function AdminDashboard() {
   }
 
   const openWhatsApp = (phone: string, name: string) => {
-    const message = encodeURIComponent(`سلام ${name}، این تیم ایران‌علاج است.`)
+    const message = encodeURIComponent(`Hello ${name}, this is IranElaj team.`)
     window.open(`https://wa.me/${phone.replace(/[^0-9]/g, '')}?text=${message}`, '_blank')
   }
 
-  // Use Persian translations throughout the component
-  const tr = persianTranslations
-
   return (
-    <div className="min-h-screen bg-gray-50" dir="rtl">
+    <div className="min-h-screen bg-gray-50">
       <div className="bg-[#026D73] text-white py-4">
         <div className="container mx-auto px-4">
-          <h1 className="text-2xl font-bold">{tr.dashboardTitle}</h1>
+          <h1 className="text-2xl font-bold">IranElaj Admin Dashboard</h1>
         </div>
       </div>
 
@@ -166,7 +127,7 @@ export default function AdminDashboard() {
                 </div>
                 <div>
                   <div className="text-2xl font-bold">{stats.total}</div>
-                  <div className="text-xs text-gray-500">{tr.totalRequests}</div>
+                  <div className="text-xs text-gray-500">Total Requests</div>
                 </div>
               </div>
             </CardContent>
@@ -179,7 +140,7 @@ export default function AdminDashboard() {
                 </div>
                 <div>
                   <div className="text-2xl font-bold">{stats.new}</div>
-                  <div className="text-xs text-gray-500">{tr.newRequests}</div>
+                  <div className="text-xs text-gray-500">New</div>
                 </div>
               </div>
             </CardContent>
@@ -192,7 +153,7 @@ export default function AdminDashboard() {
                 </div>
                 <div>
                   <div className="text-2xl font-bold">{stats.underReview}</div>
-                  <div className="text-xs text-gray-500">{tr.underReview}</div>
+                  <div className="text-xs text-gray-500">Under Review</div>
                 </div>
               </div>
             </CardContent>
@@ -205,7 +166,7 @@ export default function AdminDashboard() {
                 </div>
                 <div>
                   <div className="text-2xl font-bold">{stats.approved}</div>
-                  <div className="text-xs text-gray-500">{tr.approved}</div>
+                  <div className="text-xs text-gray-500">Approved</div>
                 </div>
               </div>
             </CardContent>
@@ -218,7 +179,7 @@ export default function AdminDashboard() {
                 </div>
                 <div>
                   <div className="text-2xl font-bold">{stats.completed}</div>
-                  <div className="text-xs text-gray-500">{tr.completed}</div>
+                  <div className="text-xs text-gray-500">Completed</div>
                 </div>
               </div>
             </CardContent>
@@ -228,20 +189,20 @@ export default function AdminDashboard() {
         {/* Requests Table */}
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle>{tr.medicalRequests}</CardTitle>
+            <CardTitle>Medical Requests</CardTitle>
             <Select value={statusFilter} onValueChange={setStatusFilter}>
               <SelectTrigger className="w-48">
-                <SelectValue placeholder={tr.filterByStatus} />
+                <SelectValue placeholder="Filter by status" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">{tr.allRequests}</SelectItem>
-                <SelectItem value="new">{tr.statuses.new}</SelectItem>
-                <SelectItem value="under_review">{tr.statuses.under_review}</SelectItem>
-                <SelectItem value="need_documents">{tr.statuses.need_documents}</SelectItem>
-                <SelectItem value="approved">{tr.statuses.approved}</SelectItem>
-                <SelectItem value="rejected">{tr.statuses.rejected}</SelectItem>
-                <SelectItem value="travel_planning">{tr.statuses.travel_planning}</SelectItem>
-                <SelectItem value="completed">{tr.statuses.completed}</SelectItem>
+                <SelectItem value="all">All Requests</SelectItem>
+                <SelectItem value="new">New</SelectItem>
+                <SelectItem value="under_review">Under Review</SelectItem>
+                <SelectItem value="need_documents">Need Documents</SelectItem>
+                <SelectItem value="approved">Approved</SelectItem>
+                <SelectItem value="rejected">Rejected</SelectItem>
+                <SelectItem value="travel_planning">Travel Planning</SelectItem>
+                <SelectItem value="completed">Completed</SelectItem>
               </SelectContent>
             </Select>
           </CardHeader>
@@ -249,22 +210,21 @@ export default function AdminDashboard() {
             {loading ? (
               <div className="text-center py-8">
                 <div className="spinner mx-auto"></div>
-                <p className="mt-2">{tr.loading}</p>
               </div>
             ) : filteredRequests.length === 0 ? (
               <div className="text-center py-8 text-gray-500">
-                {tr.noRequests}
+                No requests found
               </div>
             ) : (
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
                     <tr className="border-b">
-                      <th className="text-start py-3 px-2 text-sm font-medium text-gray-500">{tr.patient}</th>
-                      <th className="text-start py-3 px-2 text-sm font-medium text-gray-500">{tr.specialty}</th>
-                      <th className="text-start py-3 px-2 text-sm font-medium text-gray-500">{tr.status}</th>
-                      <th className="text-start py-3 px-2 text-sm font-medium text-gray-500">{tr.date}</th>
-                      <th className="text-start py-3 px-2 text-sm font-medium text-gray-500">{tr.actions}</th>
+                      <th className="text-start py-3 px-2 text-sm font-medium text-gray-500">Patient</th>
+                      <th className="text-start py-3 px-2 text-sm font-medium text-gray-500">Specialty</th>
+                      <th className="text-start py-3 px-2 text-sm font-medium text-gray-500">Status</th>
+                      <th className="text-start py-3 px-2 text-sm font-medium text-gray-500">Date</th>
+                      <th className="text-start py-3 px-2 text-sm font-medium text-gray-500">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -286,23 +246,23 @@ export default function AdminDashboard() {
                           >
                             <SelectTrigger className="w-36 h-8">
                               <Badge variant={statusColors[request.status]}>
-                                {tr.statuses[request.status as keyof typeof tr.statuses] || request.status.replace('_', ' ')}
+                                {request.status.replace('_', ' ')}
                               </Badge>
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="new">{tr.statuses.new}</SelectItem>
-                              <SelectItem value="under_review">{tr.statuses.under_review}</SelectItem>
-                              <SelectItem value="need_documents">{tr.statuses.need_documents}</SelectItem>
-                              <SelectItem value="approved">{tr.statuses.approved}</SelectItem>
-                              <SelectItem value="rejected">{tr.statuses.rejected}</SelectItem>
-                              <SelectItem value="travel_planning">{tr.statuses.travel_planning}</SelectItem>
-                              <SelectItem value="completed">{tr.statuses.completed}</SelectItem>
+                              <SelectItem value="new">New</SelectItem>
+                              <SelectItem value="under_review">Under Review</SelectItem>
+                              <SelectItem value="need_documents">Need Documents</SelectItem>
+                              <SelectItem value="approved">Approved</SelectItem>
+                              <SelectItem value="rejected">Rejected</SelectItem>
+                              <SelectItem value="travel_planning">Travel Planning</SelectItem>
+                              <SelectItem value="completed">Completed</SelectItem>
                             </SelectContent>
                           </Select>
                         </td>
                         <td className="py-3 px-2">
                           <span className="text-sm text-gray-500">
-                            {new Date(request.createdAt).toLocaleDateString('fa-IR')}
+                            {new Date(request.createdAt).toLocaleDateString()}
                           </span>
                         </td>
                         <td className="py-3 px-2">
@@ -312,7 +272,7 @@ export default function AdminDashboard() {
                               size="sm"
                               onClick={() => openWhatsApp(request.user.whatsapp, request.user.fullName)}
                             >
-                              واتساپ
+                              WhatsApp
                             </Button>
                             <Link href={`/admin/requests/${request.id}`}>
                               <Button variant="outline" size="sm">
@@ -336,7 +296,7 @@ export default function AdminDashboard() {
             <Card className="hover:shadow-md transition-shadow cursor-pointer">
               <CardContent className="p-4 flex items-center gap-3">
                 <Users className="w-8 h-8 text-[#0099A8]" />
-                <span className="font-medium">{tr.manageDoctors}</span>
+                <span className="font-medium">Manage Doctors</span>
               </CardContent>
             </Card>
           </Link>
@@ -344,7 +304,7 @@ export default function AdminDashboard() {
             <Card className="hover:shadow-md transition-shadow cursor-pointer">
               <CardContent className="p-4 flex items-center gap-3">
                 <Building2 className="w-8 h-8 text-[#0099A8]" />
-                <span className="font-medium">{tr.manageHospitals}</span>
+                <span className="font-medium">Manage Hospitals</span>
               </CardContent>
             </Card>
           </Link>
@@ -352,7 +312,7 @@ export default function AdminDashboard() {
             <Card className="hover:shadow-md transition-shadow cursor-pointer">
               <CardContent className="p-4 flex items-center gap-3">
                 <Package className="w-8 h-8 text-[#0099A8]" />
-                <span className="font-medium">{tr.managePackages}</span>
+                <span className="font-medium">Manage Packages</span>
               </CardContent>
             </Card>
           </Link>
@@ -360,7 +320,7 @@ export default function AdminDashboard() {
             <Card className="hover:shadow-md transition-shadow cursor-pointer">
               <CardContent className="p-4 flex items-center gap-3">
                 <Hotel className="w-8 h-8 text-[#0099A8]" />
-                <span className="font-medium">{tr.manageHotels}</span>
+                <span className="font-medium">Manage Hotels</span>
               </CardContent>
             </Card>
           </Link>
