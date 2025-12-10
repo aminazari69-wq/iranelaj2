@@ -1,0 +1,237 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// User model for both patients and admins
+model User {
+  id            String    @id @default(cuid())
+  fullName      String
+  email         String?   @unique
+  whatsapp      String    @unique
+  password      String?
+  otp           String?
+  otpExpiry     DateTime?
+  role          String    @default("user") // user, admin
+  avatar        String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  requests      MedicalRequest[]
+  sessions      Session[]
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// Medical Request model
+model MedicalRequest {
+  id              String   @id @default(cuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  condition       String
+  specialties     String   // JSON array of specialties
+  age             Int?
+  gender          String?
+  notes           String?
+  status          String   @default("new") // new, under_review, need_documents, approved, rejected, travel_planning, completed
+  assignedPackage String?
+  travelInfo      String?  // JSON with travel details
+  adminNotes      String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  files           MedicalFile[]
+}
+
+model MedicalFile {
+  id        String         @id @default(cuid())
+  requestId String
+  request   MedicalRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  fileName  String
+  fileType  String
+  fileSize  Int
+  filePath  String
+  createdAt DateTime       @default(now())
+}
+
+// Doctor model
+model Doctor {
+  id           String   @id @default(cuid())
+  nameAr       String
+  nameFa       String
+  nameEn       String
+  specialty    String
+  bioAr        String?
+  bioFa        String?
+  bioEn        String?
+  image        String?
+  hospital     String?
+  experience   Int?
+  rating       Float?   @default(5.0)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// Hospital model
+model Hospital {
+  id          String   @id @default(cuid())
+  nameAr      String
+  nameFa      String
+  nameEn      String
+  descAr      String?
+  descFa      String?
+  descEn      String?
+  address     String?
+  city        String?
+  image       String?
+  logo        String?
+  specialties String?  // JSON array
+  rating      Float?   @default(5.0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Treatment Package model
+model Package {
+  id          String   @id @default(cuid())
+  nameAr      String
+  nameFa      String
+  nameEn      String
+  descAr      String?
+  descFa      String?
+  descEn      String?
+  type        String   // treatment, travel_accommodation
+  price       Float?
+  duration    String?
+  includes    String?  // JSON array of included items
+  image       String?
+  specialty   String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Hotel model
+model Hotel {
+  id          String   @id @default(cuid())
+  nameAr      String
+  nameFa      String
+  nameEn      String
+  descAr      String?
+  descFa      String?
+  descEn      String?
+  address     String?
+  city        String?
+  stars       Int?     @default(4)
+  priceRange  String?
+  amenities   String?  // JSON array
+  image       String?
+  images      String?  // JSON array of image URLs
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Blog/Article model
+model Article {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  titleAr     String
+  titleFa     String
+  titleEn     String
+  contentAr   String
+  contentFa   String
+  contentEn   String
+  excerptAr   String?
+  excerptFa   String?
+  excerptEn   String?
+  image       String?
+  category    String?
+  tags        String?  // JSON array
+  author      String?
+  isPublished Boolean  @default(false)
+  publishedAt DateTime?
+  metaTitle   String?
+  metaDesc    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Homepage Content model
+model HomeContent {
+  id        String   @id @default(cuid())
+  section   String   @unique // hero, features, stats, testimonials, etc.
+  content   String   // JSON content
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Banner/Slider model
+model Banner {
+  id        String   @id @default(cuid())
+  titleAr   String?
+  titleFa   String?
+  titleEn   String?
+  subtextAr String?
+  subtextFa String?
+  subtextEn String?
+  image     String
+  link      String?
+  order     Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// SEO Settings model
+model SeoSettings {
+  id          String   @id @default(cuid())
+  page        String   @unique
+  titleAr     String?
+  titleFa     String?
+  titleEn     String?
+  descAr      String?
+  descFa      String?
+  descEn      String?
+  keywords    String?
+  ogImage     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Translations override model
+model Translation {
+  id        String   @id @default(cuid())
+  key       String
+  locale    String
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@unique([key, locale])
+}
+
+// Contact/Inquiry model
+model Contact {
+  id        String   @id @default(cuid())
+  name      String
+  email     String?
+  phone     String?
+  subject   String?
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
