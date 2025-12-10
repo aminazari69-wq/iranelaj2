@@ -1,0 +1,166 @@
+{
+  "site": {
+    "name": "IranElaj",
+    "tagline": "Your Medical Tourism Destination in Iran",
+    "description": "High-quality medical services at affordable prices in Iran"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Medical Services",
+    "cosmetic": "Cosmetic Surgery",
+    "cardiology": "Cardiology",
+    "orthopedics": "Orthopedics",
+    "dentistry": "Dentistry",
+    "ophthalmology": "Eye Surgery",
+    "other": "Other Specialties",
+    "packages": "Packages",
+    "treatmentPackages": "Treatment Packages",
+    "travelPackages": "Travel + Accommodation",
+    "doctors": "Doctors",
+    "hospitals": "Hospitals",
+    "specialServices": "Special Services",
+    "onlineConsultation": "Online Consultation",
+    "airportTransfer": "Airport Transfer",
+    "patientSupport": "Patient Support",
+    "travelInfo": "Travel Info",
+    "visaGuide": "Visa Guide",
+    "flightInfo": "Flight Information",
+    "stayGuide": "Stay Guide in Iran",
+    "hotels": "Hotels",
+    "contact": "Contact Us",
+    "about": "About Us",
+    "blog": "Blog"
+  },
+  "hero": {
+    "title": "Premium Medical Care in Iran",
+    "subtitle": "Experience the highest standards of healthcare with specialized medical teams at affordable costs",
+    "cta": "Book Your Free Consultation",
+    "learnMore": "Learn More"
+  },
+  "features": {
+    "title": "Why Choose IranElaj?",
+    "quality": "High Quality",
+    "qualityDesc": "Specialized doctors and modern internationally accredited hospitals",
+    "affordable": "Affordable Prices",
+    "affordableDesc": "Save up to 70% compared to treatment costs in your country",
+    "support": "Full Support",
+    "supportDesc": "Personal assistance from arrival until departure",
+    "experience": "Vast Experience",
+    "experienceDesc": "Thousands of patients from around the world"
+  },
+  "services": {
+    "title": "Our Medical Services",
+    "subtitle": "We offer a wide range of medical specialties",
+    "viewAll": "View All"
+  },
+  "doctors": {
+    "title": "Our Specialist Doctors",
+    "subtitle": "A team of the best doctors in Iran",
+    "experience": "Years of Experience",
+    "viewProfile": "View Profile"
+  },
+  "hospitals": {
+    "title": "Partner Hospitals",
+    "subtitle": "Internationally accredited hospitals",
+    "viewDetails": "Details"
+  },
+  "packages": {
+    "title": "Treatment Packages",
+    "subtitle": "Comprehensive packages tailored to your needs",
+    "includes": "Package Includes",
+    "book": "Book Now",
+    "from": "Starting from"
+  },
+  "testimonials": {
+    "title": "Patient Testimonials",
+    "subtitle": "Real experiences from our valued patients"
+  },
+  "cta": {
+    "title": "Ready to Start Your Medical Journey?",
+    "subtitle": "Contact us today for a free consultation",
+    "button": "Contact Us via WhatsApp"
+  },
+  "footer": {
+    "about": "We provide medical tourism services in Iran with the highest quality standards",
+    "quickLinks": "Quick Links",
+    "contactUs": "Contact Us",
+    "followUs": "Follow Us",
+    "rights": "All Rights Reserved"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "fullName": "Full Name",
+    "whatsapp": "WhatsApp Number",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "otp": "Verification Code",
+    "sendOtp": "Send OTP",
+    "loginWithOtp": "Login with OTP",
+    "loginWithPassword": "Login with Password",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "forgotPassword": "Forgot Password?"
+  },
+  "request": {
+    "title": "New Treatment Request",
+    "condition": "Medical Condition Description",
+    "conditionPlaceholder": "Describe your medical condition in detail...",
+    "specialty": "Required Specialty",
+    "selectSpecialty": "Select Specialty",
+    "files": "Medical Documents",
+    "filesHint": "You can upload images or PDF files",
+    "age": "Age",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "notes": "Additional Notes",
+    "submit": "Submit Request",
+    "success": "Your request was submitted successfully!",
+    "successMessage": "We will contact you soon via WhatsApp"
+  },
+  "status": {
+    "new": "New",
+    "under_review": "Under Review",
+    "need_documents": "Need Documents",
+    "approved": "Approved",
+    "rejected": "Rejected",
+    "travel_planning": "Travel Planning",
+    "completed": "Completed"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "myRequests": "My Requests",
+    "newRequest": "New Request",
+    "profile": "Profile",
+    "noRequests": "No requests yet"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We're here to help you",
+    "name": "Name",
+    "phone": "Phone Number",
+    "subject": "Subject",
+    "message": "Message",
+    "send": "Send",
+    "address": "Address",
+    "workingHours": "Working Hours"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "search": "Search",
+    "filter": "Filter",
+    "all": "All",
+    "readMore": "Read More",
+    "backToHome": "Back to Home"
+  }
+}
